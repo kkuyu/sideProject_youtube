@@ -10,8 +10,13 @@ const handleListening = () => console.log(`Listening on: http://localhost:${PORT
 const handleHome = (req, res) => res.send("Hello form home");
 const handleProfile = (req, res) => res.send("My Profile");
 
-app.get("/", handleHome)
+//middlewere
+const betweenHome = (req, res, next) => {
+    console.log("between!");
+    next();
+};
 
-app.get("/profile", handleProfile)
+app.get("/", betweenHome, handleHome);
+app.get("/profile", betweenHome, handleProfile);
 
 app.listen(PORT, handleListening);

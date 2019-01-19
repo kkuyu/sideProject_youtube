@@ -1,8 +1,10 @@
 const express = require('express');
 const app = express();
 
+const PORT = 4000;
+
 function handleListening(){
-    console.log("Listening on: http://localhost:4000")
+    console.log(`Listening on: http://localhost:${PORT}`)
 }
 
-app.listen(4000, handleListening);
+app.listen(PORT, handleListening);

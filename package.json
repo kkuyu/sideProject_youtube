@@ -1,0 +1,10 @@
+{
+  "name": "sideproject_youtube",
+  "version": "1.0.0",
+  "description": "Side Project, Cloning Youtube",
+  "main": "index.js",
+  "author": "kkuyu",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}

@@ -1,4 +1,6 @@
 import express from "express";
+import morgan from "morgan";
+
 const app = express();
 
 const PORT = 4000;
@@ -10,13 +12,8 @@ const handleListening = () => console.log(`Listening on: http://localhost:${PORT
 const handleHome = (req, res) => res.send("Hello form home");
 const handleProfile = (req, res) => res.send("My Profile");
 
-//middlewere
-const betweenHome = (req, res, next) => {
-    console.log("between!");
-    next();
-};
+app.use(morgan("dev"))
 
-app.use(betweenHome);
 app.get("/", handleHome);
 app.get("/profile", handleProfile);
 

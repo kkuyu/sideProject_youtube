@@ -1,5 +1,6 @@
 import express from "express";
 import morgan from "morgan";
+import helmet from "helmet";
 
 const app = express();
 
@@ -12,7 +13,8 @@ const handleListening = () => console.log(`Listening on: http://localhost:${PORT
 const handleHome = (req, res) => res.send("Hello form home");
 const handleProfile = (req, res) => res.send("My Profile");
 
-app.use(morgan("dev"))
+app.use(helmet());
+app.use(morgan("dev"));
 
 app.get("/", handleHome);
 app.get("/profile", handleProfile);

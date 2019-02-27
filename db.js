@@ -1,7 +1,8 @@
 import mongoose from "mongoose";
+import dotenv from "dotenv";
+dotenv.config();
 
-// mongodb://localhost:포트번호/프로젝트
-mongoose.connect("mongodb://localhost:27017/youtube",{
+mongoose.connect(process.env.MONGO_URL,{
     useNewUrlParser: true,
     useFindAndModify:false
 });

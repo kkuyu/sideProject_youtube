@@ -5,6 +5,7 @@ block content
     div.videos
         each items in videos
             +videoBlock({
+                id: items.id,
                 title: items.title,
                 views: items.views,
                 videoFile: items.videoFile

@@ -1,17 +1,24 @@
-import routes from "../routes"
+import routes from "../routes";
+import User from "../models/User";
 
 export const getJoin = (req, res) => {
 	res.render("join", { pageTitle: "Join" })
 };
-export const postJoin = (req, res) => {
+export const postJoin = async (req, res) => {
 	const {
-		body: {name, eamil, password, password2}
+		body: {name, email, password, password2}
 	} = req;
 	if(password !== password2){
 		res.status(400);
 		res.render("join", { pageTitle: "Join" })
 	}else{
-		// TO DO : Registar User, User Log In
+		try {
+			const user = await User({ name, email });
+			await User.register(user, password);
+		} catch (error) {
+			console.log(error);
+		}
+		// TO DO : User Log In
 		res.redirect(routes.home);
 	}
 };

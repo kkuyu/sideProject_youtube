@@ -6,10 +6,7 @@ const multerVideos = multer({ dest: 'uploads/videos/' })
 export const localMiddlewere = (req, res, next) => {
     res.locals.siteName = "Side Project, Cloning Youtube";
     res.locals.routes = routes;
-    res.locals.user = {
-        isAuthenticated: false,
-        id: 1
-    }
+    res.locals.user = req.user || {};
     next();
 }
 

@@ -19,11 +19,11 @@ const VIDEO_DETAIL = "/:id";
 const EDIT_VIDEO = "/:id/edit";
 const DELETE_VIDEO = "/:id/delete";
 
-//Github
+// Github
 const GITHUB = "/auth/github";
 const GITHUB_CALLBACK = "/auth/github/callback";
 
-//Facebook
+// Facebook
 const FB = "/auth/facebook";
 const FB_CALLBACK = "/auth/facebook/callback";
 

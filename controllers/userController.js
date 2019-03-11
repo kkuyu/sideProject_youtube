@@ -39,21 +39,16 @@ export const githubLoginCallback = async(accessToken, refreshToken, profile, cb)
 		if(user){
 			user.githubId = id;
 			user.avatarUrl = avatarUrl;
-			console.log("user")
-			console.log(user)
 			user.save();
 			return cb(null, user);
-		}else{
-			const newUser = await User.create({
-				email,
-				name,
-				githubId: id,
-				avatarUrl
-			});
-			console.log("newUser")
-			console.log(newUser)
-			return cb(null, newUser);
 		}
+		const newUser = await User.create({
+			email,
+			name,
+			githubId: id,
+			avatarUrl
+		});
+		return cb(null, newUser);
 	}catch(error){
 		return cb(error);
 	}
@@ -62,6 +57,16 @@ export const githubLoginCallback = async(accessToken, refreshToken, profile, cb)
 export const postGithubLogIn = (req, res) => {
 	res.redirect(routes.home);
 };
+
+export const facebookLogin = passport.authenticate("facebook");
+
+export const facebookLoginCallback = (accessToken, refreshToken, profile, cb) => {
+	console.log(accessToken, refreshToken, profile)
+}
+
+export const postFacebookLogin = (req, res) => {
+	res.redirect(routes.home);
+}
 
 export const logout = (req, res) => {
 	req.logout();

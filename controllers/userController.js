@@ -98,7 +98,7 @@ export const getMe = (req, res) => {
 }
 
 export const userDetail = async (req, res) => {
-	const { parms: { id } } = req;
+	const { params: { id } } = req;
 	try{
 		const user = await User.findById(id);
 		res.render("userDetail", { pageTitle: "User Detail", user });

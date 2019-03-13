@@ -7,7 +7,7 @@ const multerAvatar = multer({ dest: "uploads/avatars/" });
 export const localMiddlewere = (req, res, next) => {
     res.locals.siteName = "Side Project, Cloning Youtube";
     res.locals.routes = routes;
-    res.locals.loggedUser = req.user || {};
+    res.locals.loggedUser = req.user || null;
     next();
 }
 

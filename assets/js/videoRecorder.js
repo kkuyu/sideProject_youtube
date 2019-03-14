@@ -1,8 +1,20 @@
 const recorderContainer = document.getElementById("jsRecordContainer");
-const recorderBtn = document.getElementById("jsRecordButton");
+const recordBtn = document.getElementById("jsRecordButton");
 const videoPreview = document.getElementById("jsVideoPreview");
 
-const startRecording = async() => {
+let streamObject;
+
+const handleVideoData = event => {
+  console.log(event);
+};
+
+const startRecording = () => {
+	const videoRecorder = new MediaRecorder(streamObject);
+	videoRecorder.start();
+	videoRecorder.addEventListener("dataavailable", handleVideoData);
+};
+  
+const getVideo = async () => {
 	try{
 		const stream = await navigator.mediaDevices.getUserMedia({
 			audio: true,
@@ -11,15 +23,18 @@ const startRecording = async() => {
 		videoPreview.srcObject = stream;
 		videoPreview.muted = true;
 		videoPreview.play();
+		recordBtn.innerHTML = "Stop recording";
+		streamObject = stream;
+		startRecording();
 	}catch(error){
-		recorderBtn.innerHTML = "Can't record";
-		recorderBtn.removeEventListener("click", startRecording);
+		recordBtn.innerHTML = "Can't record";
+	}finally{
+		recordBtn.removeEventListener("click", getVideo);
 	}
-
 }
 
 function init(){
-	recorderBtn.addEventListener("click", startRecording);
+	recordBtn.addEventListener("click", getVideo);
 }
 
 if(recorderContainer){

@@ -7,10 +7,10 @@ html
         title #{pageTitle} | #{siteName}
         link(rel="stylesheet", href="/static/styles.css")
     body
-        if message.error
-            +message({
+        if messages.error
+            +messages({
                 type:"error",
-                text.message.error
+                text:messages.error
             })
         include ../partials/header
         main

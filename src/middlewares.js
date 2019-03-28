@@ -30,7 +30,7 @@ export const uploadAvatar = multerAvatar.single('avatar');
 export const localMiddlewere = (req, res, next) => {
     res.locals.siteName = "Side Project, Cloning Youtube";
     res.locals.routes = routes;
-    res.locals.loggedUser = req.user || null;
+    res.locals.loggedUser = req.user || {};
     next();
 }
 

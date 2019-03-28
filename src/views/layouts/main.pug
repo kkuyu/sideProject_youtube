@@ -1,5 +1,3 @@
-include ../mixins/message
-
 doctype html
 html
     head
@@ -7,9 +5,10 @@ html
         title #{pageTitle} | #{siteName}
         link(rel="stylesheet", href="/static/styles.css")
     body
+        include ../mixins/message
         if messages.error
-            +messages({
-                type:"error",
+            +message({
+                type:'error',
                 text:messages.error
             })
         include ../partials/header

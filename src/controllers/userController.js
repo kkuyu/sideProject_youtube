@@ -12,7 +12,7 @@ export const postJoin = async (req, res, next) => {
 	if(password !== password2){
 		req.flash("error", "Password don't match");
 		res.status(400);
-		res.redirect(routes.join)
+		res.render("join", { pageTitle: "Join" })
 	}else{
 		try {
 			const user = await User({ name, email });

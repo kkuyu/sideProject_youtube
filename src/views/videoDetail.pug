@@ -29,7 +29,10 @@ block content
                     span#jsCommentNumber=video.comments.length
                     | comments
             form.add__comment#jsAddComment
-                input(type="text", placeholder="Add a comment")
+                if loggedUser.id===undefined
+                    input(type="text", placeholder="Add a comment")
+                else
+                    input(type="text", placeholder="Login is required", readonly="readonly")
             ul.video__comments-list#jsCommentList
                 each comment in video.comments.reverse()
                     li
